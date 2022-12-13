@@ -74,9 +74,6 @@ func (m *Message) Sender() (*User, error) {
 		user = &User{Self: m.Bot.self, UserName: m.FromUserName}
 		err = user.Detail()
 	}
-	if m.IsSendByGroup() && len(user.MemberList) == 0 {
-		err = user.Detail()
-	}
 	return user, err
 }
 
